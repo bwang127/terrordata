@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>Global Terrorism</title>
+
+	<!-- ************ FULL PAGE ************** -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="fullpage/jquery.fullPage.css" />
+	<link rel="stylesheet" type="text/css" href="scrollytelling.css" />
+	<link href="https://fonts.googleapis.com/css?family=Roboto:400,100" rel="stylesheet">
+	<script type="text/javascript" src="fullpage/jquery.fullPage.min.js"></script>
+	<script type="text/javascript">
+		var headerColor = '#ddd',
+			contentColor = '#fff';
+
+		$(document).ready(function() {
+			$('#fullpage').fullpage({
+				anchors: ['title', 'manchester', 'definition', 'data', 'organizations', 'attackTarget', 'weapon', 'you', 'chances', 'explore', 'exploreMap', 'about'],
+				sectionsColor: [headerColor, contentColor, contentColor, headerColor, contentColor, contentColor, contentColor, headerColor, contentColor, headerColor, contentColor],
+				navigation: true,
+				navigationPosition: 'right',
+				navigationTooltips: ['Start', 'Manchester 2017', 'Defining Terrorism', 'Data', 'Organizations', 'Attack/Target Types', 'Weapon Types', 'Impact on You', 'Your Chances', 'Explore', 'Exploration Map', 'About']
+			});
+		});
+	</script>	
+
+	<!-- ************ GROUPS ************** -->
+	<link rel="stylesheet" type="text/css" href="groups/groups.css">
+	<link rel="stylesheet" href="groups/switchery.css" />
+	<script src="groups/switchery.js"></script>	
+
+	<!-- ************ ATTACK TARGET TYPE ************** -->
+	<link rel="stylesheet" type="text/css" href="https://dc-js.github.io/dc.js/css/dc.css"/>
+	<link rel="stylesheet" type="text/css" href="attack-target/attack_target.css" />
+	<script type="text/javascript" src="https://dc-js.github.io/dc.js/js/d3.js"></script>
+	<script type="text/javascript" src="https://dc-js.github.io/dc.js/js/crossfilter.js"></script>
+	<script type="text/javascript" src="https://dc-js.github.io/dc.js/js/dc.js"></script>
+
+	<!-- ************ WEAPON TYPE ************** -->
+	<link rel="stylesheet" type="text/css"
+      href="https://fonts.googleapis.com/css?family=Open+Sans:400,600">	
+    <link rel="stylesheet" type="text/css" href="weapons/weapons.css"/>
+
+	<!-- ************ CHANCES ************** -->
+	<link rel="stylesheet" type="text/css" href="chances/style.css" />
+
+	<!-- ************ EXPLORATION ************** -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="explore-map/terrorism.css">	
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+	<script src="https://d3js.org/d3.v3.min.js"></script>
+	<script src="https://d3js.org/d3.v4.min.js"></script>
+	<script src="https://d3js.org/topojson.v1.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/d3-legend/2.24.0/d3-legend.js"></script>	
+	<script src="https://unpkg.com/topojson@3"></script>
+
+</head>
+<body>
+	<div id="fullpage">
+		<div class="section" id="section0">
+			<div class="header" id="main-title">
+				<h1>Global Terrorism</h1>
+				<h2>Through the Lens of Data</h2>
+			</div>
+		</div>
+
+		<div class="section" id="section1">
+		    <div class="content">
+				<h1>Terrorism can occur anywhere.</h1>
+				<p>On May 22, 2017, a suicide bombing occurred inside Manchester Arena during an Ariana Grande concert.</p>
+				<p>The blast killed 23 and injured 116, the youngest casualty an eight-year-old girl. So far, 14 people have been arrested in connection with the attack.</p>
+				<br/><br/><br/><br/>
+				<p>Stories like this seem to be increasing in prevalence. Is terrorism around the world on the rise, or is the media overly fixated on these stories for their shock value?</p>
+			</div>
+		</div>
+
+		<div class="section" id="section2">
+			<div class="content">
+				<h1>Terrorism has no real definition.</h1>
+				<p>"Terrorism is the use of violence or threat of violence especially against civilians in the pursuit of political aims, religious, or ideological change."</p>
+				<p>"Reasonable acts of self-defense, such as the use of force to kill, apprehend, or punish criminals who pose a threat to the lives of humans or property."</p>
+				<p>"One man's terrorist is another man's freedom fighter."</p>
+				<br/><br/><br/><br/>
+				<p>What does the data reveal about terrorism?</p>
+			</div>
+		</div>
+
+		<div class="section" id="section3">
+			<div class="header">
+				<h1>Breaking Down the Data</h1>
+			</div>
+		</div>
+
+		<div class="section" id="section4">
+			<div class="content">
+				<h1>Which organizations are most active?</h1>
+				<p>These are all the groups that have killed over 1000 people since 1970. Toggle between number of attacks and number of people killed.</p>
+				<div class="treemap">
+					<svg width="800" height="480"></svg>
+					
+					<form>
+						<div class="switch-field">
+					      <input type="radio" id="switch_left" name="switch_2" value="sumByCount" checked/>
+					      <label for="switch_left">Number Attacks</label>
+					      <input type="radio" id="switch_right" name="switch_2" value="sumBySize" />
+					      <label for="switch_right">Number Killed</label>
+					    </div>
+					</form>
+
+					<div id="treemap-legend">
+						<div id="treemap-legend-div"></div>
+						<div class="toggler">
+							<label>Number Attacks </label>
+							<input type="checkbox" class="js-dynamic-switch" />
+							<label> Number Killed</label>
+						</div>
+					</div>
+					
+					<script src="groups/groups.js"></script>
+				</div>
+			</div>
+		</div>
+
+		<div class="section" id="section5">
+			<div class="content">
+				<h1>Does the target affect mode of attack?</h1>
+				<p>Click to see how the number of attacks changes based on the combination of attack and target type.</p>
+				<div id="chart-attack"></div>
+				<div id="chart-target"></div>
+				<script src="attack-target/attack_target.js"></script>
+			</div>
+		</div>
+
+		<div class="section" id="section6">
+			<div class="content">
+				<h1>Which weapons have claimed the most lives?</h1>
+				<p>Hover to explore types and subtypes of weapons.</p>
+				<div id="main">
+					<div id="sequence"></div>
+					<div id="weapon-chart"></div>
+
+					<div id="explanation" style="visibility: hidden;">
+						<span id="numkilled"></span><br/>
+						of people killed by <span id="weapon-type"></span>
+					</div>
+
+					<div id="weapon-legend"></div>
+				</div>
+				<script type="text/javascript" src="weapons/weapons.js"></script>
+			</div>
+		</div>
+
+		<div class="section" id="section7">
+			<div class="header">
+				<h1>Is Terrorism a Threat to You?</h1>
+			</div>
+		</div>
+
+		<div class="section" id="section8">
+			<div class="content">
+				<h1>What are your chances of being a terrorism fatality?</h1>
+				<p>In 2014, a total of 2,626,418 deaths were registered in the US. Compare the probabilty of dying in a terrorist attack to the leading causes of death that year.</p>
+				<div class="roulette-container">
+					</br>
+				    <div class="spinners-container">
+				        <div class="race-category" id="first-column"></div>
+				        <div class="race-category" id="second-column"></div>
+				    </div>
+				    <div class="button-container">
+				    	<button type="button" class="spin-button">SPIN</button>
+				    </div>
+				</div>  
+				<script src="chances/waffle.js"></script>
+			</div>
+		</div>	
+
+		<div class="section" id="section9">
+			<div class="header">
+				<h1>Explore Terrorism Worldwide</h1>
+			</div>
+		</div>
+
+		<div class="section" id="section10">
+			<div class="content">
+				<h1>How has terrorism changed globally since 1970?</h1>
+				<p>Use the slider and hover over countries to view data from different years.</p>
+				<br/>
+				<div class="col-md-10" id="container">
+					<div class="col-md-4" id="panel">
+						<div id="zoomButtons">
+							<div><button id="zoom_in">+</button></div>
+							<div><button id="zoom_out">-</button></div>
+						</div>
+						<div id="panelInfo">
+							[Country] [Year]
+							</br>[Number killed]
+							</br>[Number attacks]
+						</div>
+						
+					</div>
+					<div class="col-md-4" id="legend"></div>
+					<div class="col-md-8" id="map"></div>
+					<div class="col-md-10 col-md-offset-4" id="slider-histogram"></div>
+					<div class="col-md-10 col-md-offset-4" id="slider"></div>
+				</div>
+
+				<script src="visualization.js"></script>
+			</div>
+		</div>
+
+		<div class="section" id="section11">
+			<div class="content">
+				<h1>About this project</h1>
+				<p>Our names are <a href="https://www.linkedin.com/in/sheen-dudwadkar-b036078a/">Sheen Dudwadkar</a>, <a href="https://www.linkedin.com/in/michelle-lee-90025299/">Michelle Lee</a>, <a href="https://www.linkedin.com/in/carson-gulledge-399b8572/">Carson Gulledge</a>, and <a href="https://www.linkedin.com/in/gracieqiu/">Grace Qiu</a>.</p>
+				<p>This was a final project for the first undergraduate data visualization course at UW, <a href="http://courses.cs.washington.edu/courses/cse442/17sp/">CSE 442</a>.</p>
+				<p>Special thanks to our professor <a href="https://twitter.com/jeffrey_heer">Jeff Heer</a> and the course staff.</p>
+				<p>The <a href="https://www.kaggle.com/START-UMD/gtd">Global Terrorism Database</a> has data on terror attacks from 1970-2015 around the world with <a href="http://start.umd.edu/gtd/downloads/Codebook.pdf">information</a> about location, type of attack, attack target, group responsible, weapons used, ransom notes/manifestos etc.</p>
+				</br>
+				<iframe src="https://player.vimeo.com/video/219794399" width="608" height="378" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+
+			</div>
+		</div>
+	</div>
+</body>
+</html>
